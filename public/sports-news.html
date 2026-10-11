@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07152b">
+<title>World Sports News | GFT.TV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#07152b;--blue:#0878e8;--sky:#54b5ff;--white:#fff;--muted:#b6c6da;--panel:#10213a;--line:#243b59}
+*{box-sizing:border-box}
+body{margin:0;background:#081321;color:var(--white);font-family:Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+header{padding:16px 5%;min-height:76px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;background:#07152b;border-bottom:1px solid var(--line)}
+.brand{font:900 27px Outfit,sans-serif}.brand span{color:var(--sky)}
+.brand small{display:block;font:600 9px Inter,sans-serif;letter-spacing:2px;color:var(--muted)}
+nav{display:flex;flex-wrap:wrap;gap:20px;font-size:13px}
+nav a:hover{color:var(--sky)}
+.hero{min-height:430px;padding:60px 7%;display:flex;align-items:center;background:linear-gradient(90deg,rgba(3,13,29,.97),rgba(3,13,29,.75),rgba(3,13,29,.25)),var(--news-hero) center/cover no-repeat;border-bottom:3px solid var(--blue)}
+.hero-content{max-width:750px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sky)}
+h1,h2,h3{font-family:Outfit,Inter,sans-serif}
+h1{font-size:clamp(40px,6vw,68px);line-height:1.03;letter-spacing:-1.5px;margin:17px 0}
+h1 span{color:var(--sky)}
+.hero p{max-width:650px;color:#d8e4f2;line-height:1.8}
+.button{display:inline-block;margin-top:15px;padding:13px 18px;background:var(--blue);border-radius:7px;font-size:13px;font-weight:700}
+.section{max-width:1450px;margin:auto;padding:42px 5%}
+.section h2{font-size:clamp(27px,4vw,36px);margin:0 0 9px}
+.intro{color:var(--muted);line-height:1.7;margin-top:0}
+.headline-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:20px}
+.story{--story-image:none;min-height:260px;display:flex;align-items:end;overflow:hidden;border:1px solid var(--line);border-radius:13px;background:linear-gradient(0deg,rgba(3,12,26,.97),rgba(3,12,26,.08)),var(--story-image) center/cover no-repeat,#142b48}
+.story-content{padding:23px}
+.story-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--sky);text-transform:uppercase}
+.story h3{font-size:25px;margin:10px 0}
+.story p{font-size:13px;line-height:1.7;color:#d1dfef;margin-bottom:0}
+.main-story{min-height:390px}
+.main-story h3{font-size:clamp(27px,4vw,39px)}
+.small-stories{display:grid;grid-template-rows:1fr 1fr;gap:20px}
+.small-stories .story{min-height:185px}
+.category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.category{padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.category h3{font-size:19px;margin:0 0 8px}
+.category p{color:var(--muted);font-size:12px;line-height:1.6;margin:0}
+.info-panel{padding:27px;border-radius:13px;background:linear-gradient(120deg,#10366a,#10213a);border:1px solid #2b5483}
+.info-panel p{color:#d3e0ef;line-height:1.8}
+.note{font-size:12px;color:var(--muted)}
+footer{padding:25px 5%;background:#050c17;border-top:1px solid var(--line);font-size:12px;line-height:1.8;color:var(--muted)}
+@media(max-width:850px){.headline-grid{grid-template-columns:1fr}.main-story{min-height:320px}.small-stories{grid-template-columns:1fr 1fr;grid-template-rows:auto}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){header{align-items:flex-start;flex-direction:column}nav{gap:13px}.hero{min-height:360px;padding:42px 6%}.small-stories{grid-template-columns:1fr}.category-grid{grid-template-columns:1fr}.section{padding:30px 5%}}
+</style>
+</head>
+<body>
+<header>
+<a class="brand" href="gft-tv.html">GFT<span>.TV</span><small>WORLD SPORTS NEWS</small></a>
+<nav aria-label="News navigation">
+<a href="gft-tv.html">GFT.TV Home</a>
+<a href="#headlines">Headlines</a>
+<a href="#coverage">Coverage</a>
+<a href="#about">About</a>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+<div class="hero-content">
+<div class="eyebrow">Gate 02 · The global sports desk</div>
+<h1>The world of sport.<br><span>Every story matters.</span></h1>
+<p>Discover sporting developments, tournament reports, athlete stories and analysis from Africa and around the world.</p>
+<a class="button" href="#headlines">EXPLORE SPORTS NEWS →</a>
+</div>
+</section>
+
+<section class="section" id="headlines">
+<h2>Featured Sports Desk</h2>
+<p class="intro">A home for major stories, local achievements and international sporting developments.</p>
+<div class="headline-grid">
+<article class="story main-story" id="leadStory">
+<div class="story-content">
+<div class="story-label">Featured coverage</div>
+<h3>Sport connects the world</h3>
+<p>Explore competitions, sporting milestones, athlete journeys and the stories behind the game.</p>
+</div>
+</article>
+<div class="small-stories">
+<article class="story" id="africaStory">
+<div class="story-content">
+<div class="story-label">African Sports</div>
+<h3>Talent across the continent</h3>
+<p>Discover teams, athletes and sporting communities from across Africa.</p>
+</div>
+</article>
+<article class="story" id="globalStory">
+<div class="story-content">
+<div class="story-label">Global Spotlight</div>
+<h3>Beyond the scoreboard</h3>
+<p>Profiles, interviews, history and analysis across sporting disciplines.</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="section" id="coverage">
+<h2>Explore News Categories</h2>
+<p class="intro">The news desk can expand as new sports and reporting teams are added.</p>
+<div class="category-grid">
+<article class="category"><h3>⚽ Match Reports</h3><p>Results, recaps and notable moments from competitions.</p></article>
+<article class="category"><h3>🔄 Transfers</h3><p>Player movement, contracts and team announcements.</p></article>
+<article class="category"><h3>🌍 African Sports</h3><p>Regional leagues, national teams and community sport.</p></article>
+<article class="category"><h3>🏆 International</h3><p>Major tournaments and global sporting events.</p></article>
+<article class="category"><h3>🎙 Interviews</h3><p>Athlete, coach and sports-community conversations.</p></article>
+<article class="category"><h3>📊 Analysis</h3><p>Explainers, statistics and informed commentary.</p></article>
+<article class="category"><h3>📅 Fixtures & Results</h3><p>Future connections to authorized live-data providers.</p></article>
+<article class="category"><h3>📺 Video Reports</h3><p>Original reports and properly licensed sports video.</p></article>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="info-panel">
+<h2>Building a trusted sports newsroom</h2>
+<p>GFT.TV will be able to publish original reporting, verified updates, interviews, features and community stories. Future live feeds and media integrations will be connected through approved providers.</p>
+<p class="note">This initial page is a design foundation; it does not yet contain a live news feed or automatically updated headlines.</p>
+</div>
+</section>
+</main>
+
+<footer>
+<strong>GFT.TV · World Sports News</strong><br>
+Reporting sport, celebrating achievement and connecting communities.<br>
+© <span id="year"></span> GFT.TV
+</footer>
+
+<script>
+/*
+  EDITABLE NEWSROOM IMAGES
+  Replace these URLs with images you are authorised to use.
+  Local example: images/newsroom.jpg
+*/
+const NEWS_IMAGES = {
+  lead: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=85",
+  africa: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=85",
+  global: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=900&q=85",
+  hero: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1800&q=85"
+};
+document.getElementById("leadStory").style.setProperty("--story-image",`url("${NEWS_IMAGES.lead}")`);
+document.getElementById("africaStory").style.setProperty("--story-image",`url("${NEWS_IMAGES.africa}")`);
+document.getElementById("globalStory").style.setProperty("--story-image",`url("${NEWS_IMAGES.global}")`);
+document.querySelector(".hero").style.setProperty("--news-hero",`url("${NEWS_IMAGES.hero}")`);
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

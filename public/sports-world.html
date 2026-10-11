@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07152b">
+<title>Guvaza Sports World | GFT.TV</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:#07152b;
+  --blue:#0878e8;
+  --electric:#48adff;
+  --white:#fff;
+  --muted:#b8c8dc;
+  --panel:#10213a;
+  --line:#243b59;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:#081321;
+  color:var(--white);
+  font-family:Inter,Arial,sans-serif;
+}
+a { color:inherit;text-decoration:none; }
+header {
+  min-height:76px;
+  padding:16px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:18px;
+  background:#07152b;
+  border-bottom:1px solid var(--line);
+}
+.brand {
+  font-family:Outfit,sans-serif;
+  font-size:27px;
+  font-weight:900;
+}
+.brand span { color:var(--electric); }
+.brand small {
+  display:block;
+  color:var(--muted);
+  font-family:Inter,sans-serif;
+  font-size:9px;
+  letter-spacing:2px;
+}
+nav { display:flex;flex-wrap:wrap;gap:20px;font-size:13px; }
+nav a:hover { color:var(--electric); }
+.hero {
+  min-height:440px;
+  display:flex;
+  align-items:center;
+  padding:65px 7%;
+  background:
+    linear-gradient(90deg,rgba(4,15,33,.96),rgba(4,15,33,.72),rgba(4,15,33,.24)),
+    var(--sports-hero) center/cover no-repeat;
+  border-bottom:3px solid var(--blue);
+}
+.hero-content { max-width:750px; }
+.eyebrow {
+  color:var(--electric);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+h1,h2,h3 { font-family:Outfit,Inter,sans-serif; }
+h1 {
+  margin:16px 0;
+  font-size:clamp(40px,6vw,70px);
+  line-height:1.02;
+  letter-spacing:-1.8px;
+}
+h1 span { color:var(--electric); }
+.hero p { max-width:630px;color:#e0eaf7;line-height:1.8; }
+.button {
+  display:inline-block;
+  margin-top:16px;
+  padding:13px 18px;
+  background:var(--blue);
+  border-radius:7px;
+  font-size:13px;
+  font-weight:700;
+}
+.section { max-width:1500px;margin:auto;padding:44px 5%; }
+.section-title { margin:0 0 8px;font-size:clamp(27px,4vw,37px); }
+.section-intro { color:var(--muted);line-height:1.7;margin-top:0; }
+.sports-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:17px;
+}
+.sport-card {
+  --sport-image:none;
+  position:relative;
+  min-height:205px;
+  display:flex;
+  align-items:end;
+  overflow:hidden;
+  border:1px solid #2b4667;
+  border-radius:12px;
+  background:
+    linear-gradient(0deg,rgba(4,14,30,.97),rgba(4,14,30,.08)),
+    var(--sport-image) center/cover no-repeat,
+    #142b48;
+  transition:transform .2s,border-color .2s;
+}
+.sport-card:hover { transform:translateY(-4px);border-color:var(--electric); }
+.sport-info { padding:18px;width:100%; }
+.sport-info h3 { font-size:21px;margin:0 0 7px; }
+.sport-info p { font-size:12px;color:#cfdded;line-height:1.6;margin:0 0 12px; }
+.explore { color:var(--electric);font-size:12px;font-weight:700; }
+.more-card {
+  background:linear-gradient(140deg,#0d4380,#0b1d36);
+  border-color:#237bd0;
+}
+.feature-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.feature {
+  padding:22px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+.feature .symbol { font-size:25px; }
+.feature h3 { margin:12px 0 8px;font-size:20px; }
+.feature p { margin:0;color:var(--muted);font-size:13px;line-height:1.7; }
+.future {
+  padding:27px;
+  background:linear-gradient(120deg,#10366a,#10213a);
+  border:1px solid #2b5483;
+  border-radius:13px;
+}
+.future h2 { margin-top:0; }
+.future p { color:#d2dfef;line-height:1.8; }
+footer {
+  padding:25px 5%;
+  background:#050c17;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+  border-top:1px solid var(--line);
+}
+@media(max-width:950px) {
+  .sports-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .feature-grid { grid-template-columns:1fr; }
+}
+@media(max-width:520px) {
+  header { align-items:flex-start;flex-direction:column; }
+  nav { gap:13px; }
+  .hero { min-height:390px;padding:45px 6%; }
+  .sports-grid { grid-template-columns:1fr; }
+  .sport-card { min-height:230px; }
+  .section { padding:32px 5%; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a class="brand" href="gft-tv.html">
+    GFT<span>.TV</span>
+    <small>GUVAZA SPORTS WORLD</small>
+  </a>
+  <nav aria-label="Sports navigation">
+    <a href="gft-tv.html">GFT.TV Home</a>
+    <a href="#sports">Explore Sports</a>
+    <a href="#features">Sports Hub</a>
+    <a href="#future">What's Ahead</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Gate 01 · The world of sport</div>
+    <h1>Where passion<br>meets <span>performance.</span></h1>
+    <p>
+      Discover the sports you love, learn about legendary athletes,
+      explore competitions and celebrate rising talent from communities
+      across Africa and around the world.
+    </p>
+    <a class="button" href="#sports">EXPLORE ALL SPORTS &nbsp; →</a>
+  </div>
+</section>
+
+<section class="section" id="sports">
+  <h2 class="section-title">Explore the Sports World</h2>
+  <p class="section-intro">Choose a sport. Discover its stories, skills and traditions.</p>
+  <div class="sports-grid" id="sportsGrid"></div>
+</section>
+
+<section class="section" id="features">
+  <h2 class="section-title">Your Sports Hub</h2>
+  <p class="section-intro">Dedicated areas we can develop as the platform grows.</p>
+  <div class="feature-grid">
+    <article class="feature">
+      <div class="symbol">🏆</div>
+      <h3>Competitions & Leagues</h3>
+      <p>Future league pages, tournament information, fixtures, standings and results.</p>
+    </article>
+    <article class="feature">
+      <div class="symbol">⭐</div>
+      <h3>Athletes & Teams</h3>
+      <p>Profiles, achievements, team histories, statistics and emerging talent.</p>
+    </article>
+    <article class="feature">
+      <div class="symbol">🌍</div>
+      <h3>African Sports Community</h3>
+      <p>Local clubs, school sports, grassroots competitions and community stories.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="future">
+  <div class="future">
+    <h2>More than a sports directory</h2>
+    <p>
+      GFT Sports World is designed for future expansion into coaching
+      resources, training guides, sports education, athlete interviews,
+      event calendars, authorised live coverage and accessible sports
+      history. Additional sports can be added through the sports catalogue.
+    </p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <strong>GFT.TV · Guvaza Sports World</strong><br>
+  Celebrating sport, talent and community.<br>
+  © <span id="year"></span> GFT.TV
+</footer>
+
+<script>
+/*
+  EDITABLE SPORTS IMAGES
+  Replace any image URL below with your own authorised image URL,
+  or a local image placed in public/images/, e.g. images/soccer.jpg.
+  To add a sport, add another object to SPORTS below.
+*/
+const SPORTS = [
+  {
+    name:"Soccer",
+    description:"Clubs, players, leagues and the beautiful game.",
+    image:"https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Netball",
+    description:"Skill, teamwork, speed and precision.",
+    image:"https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Rugby",
+    description:"Power, strategy and team spirit.",
+    image:"https://images.unsplash.com/photo-1518604666860-9ed391f76460?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Cricket",
+    description:"Bat, ball, technique and competition.",
+    image:"https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Golf",
+    description:"Precision, patience and course strategy.",
+    image:"https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Tennis",
+    description:"Rallies, tactics and individual excellence.",
+    image:"https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Athletics",
+    description:"Running, jumping, throwing and endurance.",
+    image:"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Basketball",
+    description:"Court action, teamwork and high-flying skills.",
+    image:"https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Swimming",
+    description:"Speed, technique and aquatic competition.",
+    image:"https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Boxing & Combat",
+    description:"Discipline, training and competitive technique.",
+    image:"https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Motorsport",
+    description:"Racing, engineering and precision driving.",
+    image:"https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"More Sports",
+    description:"Volleyball, hockey, cycling, esports and many more.",
+    image:"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=85",
+    more:true
+  }
+];
+
+const grid = document.getElementById("sportsGrid");
+
+SPORTS.forEach((sport) => {
+  const card = document.createElement("article");
+  card.className = "sport-card" + (sport.more ? " more-card" : "");
+  card.style.setProperty("--sport-image", `url("${sport.image}")`);
+
+  const info = document.createElement("div");
+  info.className = "sport-info";
+
+  const heading = document.createElement("h3");
+  heading.textContent = sport.name;
+
+  const description = document.createElement("p");
+  description.textContent = sport.description;
+
+  const link = document.createElement("a");
+  link.className = "explore";
+  link.href = sport.more ? "#future" : "#features";
+  link.textContent = sport.more ? "DISCOVER MORE SPORTS →" : "EXPLORE SPORT →";
+
+  info.append(heading, description, link);
+  card.append(info);
+  grid.append(card);
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+document.documentElement.style.setProperty(
+  "--sports-hero",
+  'url("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1800&q=85")'
+);
+</script>
+</body>
+</html>

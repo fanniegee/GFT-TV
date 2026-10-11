@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123e35">
+  <title>World Religious Channel | GFT.TV</title>
+  <meta name="description" content="Explore world religions, sacred traditions, festivals, beliefs, history and interfaith learning through GFT.TV.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --jade: #123e35;
+      --jade-light: #1b5a49;
+      --gold: #c8a65a;
+      --ivory: #faf8f0;
+      --white: #ffffff;
+      --ink: #202d29;
+      --muted: #68746e;
+      --line: #e6e5da;
+      --shadow: 0 16px 40px rgba(18, 62, 53, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, .brand, .eyebrow {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      background: var(--jade);
+      color: #fff;
+      padding: 12px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+
+    .brand span { color: var(--gold); }
+
+    .topbar a.back {
+      border: 1px solid rgba(255,255,255,.35);
+      padding: 8px 15px;
+      border-radius: 25px;
+      font-size: .85rem;
+    }
+
+    .hero {
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      padding: 76px 7%;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(9, 37, 31, .94), rgba(9, 37, 31, .58)),
+        var(--religion-hero, linear-gradient(135deg, #123e35, #94783d));
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero-content { max-width: 760px; }
+
+    .eyebrow {
+      color: #e9ce83;
+      text-transform: uppercase;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1.04;
+      letter-spacing: -2px;
+      margin: 17px 0;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 1.05rem;
+      color: #f0f1e9;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 7px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .button.gold { background: var(--gold); color: #172b24; }
+    .button.outline { border: 1px solid rgba(255,255,255,.65); color: #fff; }
+
+    .container { width: min(1180px, 88%); margin: auto; }
+
+    .intro {
+      padding: 52px 0 20px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    h2 {
+      color: var(--jade);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      margin: 0 0 14px;
+    }
+
+    .intro p, .section-heading p { color: var(--muted); }
+
+    .principle {
+      background: #f0eee2;
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+      padding: 23px;
+      font-size: .95rem;
+    }
+
+    .section { padding: 46px 0; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .section-heading p { margin: 0; max-width: 580px; }
+
+    .religion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .religion-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: 0 7px 22px rgba(18,62,53,.045);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .religion-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-image {
+      height: 185px;
+      background: #e3e6d9;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .card-content { padding: 21px; }
+
+    .card-content h3 {
+      color: var(--jade);
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+    }
+
+    .card-content p {
+      color: var(--muted);
+      margin: 0;
+      font-size: .91rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #edf2eb;
+      color: var(--jade);
+      border-radius: 20px;
+      padding: 5px 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 25px;
+      border-radius: 12px;
+      background: white;
+      border: 1px solid var(--line);
+    }
+
+    .feature .symbol {
+      color: #9a792f;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 { color: var(--jade); margin: 0 0 8px; }
+    .feature p { color: var(--muted); font-size: .91rem; margin: 0; }
+
+    .festivals {
+      background: var(--jade);
+      color: white;
+      border-radius: 16px;
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .festivals h2 { color: white; }
+    .festivals p { color: #d8e5dc; }
+
+    .festival-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .festival-item {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 9px;
+      padding: 13px;
+      font-size: .9rem;
+    }
+
+    .festival-item strong { display: block; color: #f0d58c; }
+
+    .notice {
+      background: #f0eee2;
+      border-radius: 12px;
+      padding: 23px;
+      color: #4c5b52;
+      font-size: .9rem;
+      margin-top: 25px;
+    }
+
+    footer {
+      background: #0b2e27;
+      color: #d7e2da;
+      margin-top: 45px;
+      padding: 30px 6%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: .85rem;
+    }
+
+    footer strong { color: white; }
+
+    @media (max-width: 850px) {
+      .intro, .festivals { grid-template-columns: 1fr; }
+      .religion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { min-height: 420px; padding: 55px 6%; }
+      h1 { letter-spacing: -1px; }
+      .religion-grid, .feature-grid { grid-template-columns: 1fr; }
+      .festival-list { grid-template-columns: 1fr; }
+      .festivals { padding: 25px; }
+      .container { width: 90%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="gft-tv.html">GFT<span>.TV</span></a>
+    <a class="back" href="gft-tv.html">← Back to GFT.TV</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Knowledge · Heritage · Understanding</div>
+        <h1>World Religious Channel</h1>
+        <p>
+          Explore the beliefs, histories, sacred traditions, festivals and
+          cultural contributions of religious communities around the world.
+          Learn with curiosity, respect and an open mind.
+        </p>
+        <div class="hero-actions">
+          <a class="button gold" href="#traditions">Explore Traditions</a>
+          <a class="button outline" href="#learning">Interfaith Learning</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="intro">
+        <div>
+          <div class="eyebrow" style="color:#9a792f">A world of traditions</div>
+          <h2>Many paths, histories and communities</h2>
+          <p>
+            Religion and spirituality have shaped art, music, philosophy,
+            community life, architecture and important moments in human history.
+            This channel offers an introductory guide to traditions and the
+            people who practise them.
+          </p>
+        </div>
+        <aside class="principle">
+          <strong>Our guiding principle</strong><br>
+          Present traditions fairly and respectfully. Communities are diverse,
+          and no single description represents every believer. Learning about
+          a tradition does not require adopting its beliefs.
+        </aside>
+      </section>
+
+      <section class="section" id="traditions">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow" style="color:#9a792f">Explore traditions</div>
+            <h2>Religions and worldviews</h2>
+          </div>
+          <p>
+            Introductory categories for learning about origins, beliefs,
+            practices, communities and the diversity within each tradition.
+          </p>
+        </div>
+        <div class="religion-grid" id="religionGrid"></div>
+      </section>
+
+      <section class="section" id="learning">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow" style="color:#9a792f">Learn and discover</div>
+            <h2>More ways to explore</h2>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="symbol">✦</div>
+            <h3>Sacred texts and teachings</h3>
+            <p>
+              Discover how different communities preserve, interpret and
+              discuss important writings, oral teachings and commentaries.
+            </p>
+          </article>
+          <article class="feature">
+            <div class="symbol">⌂</div>
+            <h3>Sacred places and architecture</h3>
+            <p>
+              Explore places of worship, pilgrimage sites, memorials and
+              architectural traditions in their cultural and historical contexts.
+            </p>
+          </article>
+          <article class="feature">
+            <div class="symbol">◎</div>
+            <h3>Interfaith understanding</h3>
+            <p>
+              Learn about respectful dialogue, shared community concerns,
+              differences in belief and ways people cooperate across traditions.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="festivals">
+          <div>
+            <div class="eyebrow">Celebration and remembrance</div>
+            <h2>Festivals and sacred seasons</h2>
+            <p>
+              Festivals may express gratitude, devotion, remembrance,
+              renewal or community identity. Dates and practices can vary
+              between countries, calendars and religious communities.
+            </p>
+          </div>
+          <div class="festival-list">
+            <div class="festival-item"><strong>Christmas</strong>Christian traditions</div>
+            <div class="festival-item"><strong>Eid al-Fitr</strong>Muslim communities</div>
+            <div class="festival-item"><strong>Diwali</strong>Celebrated in several Indian religious traditions</div>
+            <div class="festival-item"><strong>Vesak</strong>Buddhist communities</div>
+            <div class="festival-item"><strong>Passover</strong>Jewish traditions</div>
+            <div class="festival-item"><strong>Vaisakhi</strong>Especially important in Sikh communities</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow" style="color:#9a792f">Heritage and community</div>
+            <h2>Beliefs in everyday life</h2>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="symbol">♫</div>
+            <h3>Music, art and expression</h3>
+            <p>Explore devotional music, visual arts, poetry, storytelling and the many ways communities express meaning.</p>
+          </article>
+          <article class="feature">
+            <div class="symbol">♡</div>
+            <h3>Service and compassion</h3>
+            <p>Learn about charity, hospitality, care for neighbours, social responsibility and service in different traditions.</p>
+          </article>
+          <article class="feature">
+            <div class="symbol">⌛</div>
+            <h3>History and change</h3>
+            <p>Understand how traditions develop over time and how migration, culture and historical events shape communities.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="notice">
+        <strong>About this channel:</strong> This is the initial design and
+        learning catalogue for GFT.TV. Articles, videos, interviews and
+        community contributions can be added in later stages. Educational
+        material should be reviewed for accuracy, context and respectful
+        representation before publication.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div><strong>GFT.TV</strong> · World Religious Channel</div>
+    <div>Knowledge, heritage and respectful understanding.</div>
+    <div><a href="gft-tv.html">Return to GFT.TV home</a></div>
+  </footer>
+
+  <script>
+    /*
+      EDITABLE IMAGE GUIDE:
+      Change each image URL below to another image URL, or use a local image:
+      "images/christianity.jpg"
+      Place local images inside the public/images folder.
+      Only use images you own or have permission to publish.
+    */
+    const RELIGION_IMAGES = {
+      hero: "https://images.unsplash.com/photo-1519491050282-cf00c82424b4?auto=format&fit=crop&w=1800&q=85",
+      christianity: "https://images.unsplash.com/photo-1548625361-58a9b86aa83b?auto=format&fit=crop&w=900&q=80",
+      islam: "https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=900&q=80",
+      hinduism: "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=900&q=80",
+      buddhism: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=900&q=80",
+      judaism: "https://images.unsplash.com/photo-1561488111-5d800fd56b1c?auto=format&fit=crop&w=900&q=80",
+      sikhism: "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=900&q=80",
+      bahai: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80",
+      indigenous: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=80",
+      traditions: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80"
+    };
+
+    document.documentElement.style.setProperty(
+      "--religion-hero",
+      'url("' + RELIGION_IMAGES.hero + '")'
+    );
+
+    const RELIGIONS = [
+      {
+        key: "christianity",
+        name: "Christianity",
+        tag: "Faith and community",
+        description: "Explore Christian history, scriptures, worship, denominations, music, festivals and community traditions."
+      },
+      {
+        key: "islam",
+        name: "Islam",
+        tag: "Belief and practice",
+        description: "Learn about Muslim communities, the Qur’an, prayer, Ramadan, Eid and the diversity of Islamic traditions."
+      },
+      {
+        key: "hinduism",
+        name: "Hindu traditions",
+        tag: "Philosophy and devotion",
+        description: "Discover diverse philosophies, sacred texts, devotional practices, festivals, art and living traditions."
+      },
+      {
+        key: "buddhism",
+        name: "Buddhism",
+        tag: "Wisdom and practice",
+        description: "Explore Buddhist teachings, meditation, ethics, historical schools, sacred places and festivals."
+      },
+      {
+        key: "judaism",
+        name: "Judaism",
+        tag: "History and covenant",
+        description: "Learn about Jewish history, Torah, worship, cultural diversity, festivals and community life."
+      },
+      {
+        key: "sikhism",
+        name: "Sikhism",
+        tag: "Equality and service",
+        description: "Discover Sikh history, the Guru Granth Sahib, the gurdwara, community service and key celebrations."
+      },
+      {
+        key: "bahai",
+        name: "Baháʼí Faith",
+        tag: "Unity and service",
+        description: "Explore its teachings, history, devotional life and emphasis on humanity's spiritual unity."
+      },
+      {
+        key: "indigenous",
+        name: "Indigenous traditions",
+        tag: "Land and heritage",
+        description: "Learn about varied Indigenous spiritualities, ancestral knowledge, place, ceremony and cultural continuity."
+      },
+      {
+        key: "traditions",
+        name: "African and traditional religions",
+        tag: "Ancestry and community",
+        description: "Explore diverse African and other traditional worldviews, oral heritage, community rituals and relationships with ancestors."
+      }
+    ];
+
+    document.getElementById("religionGrid").innerHTML = RELIGIONS.map(item => `
+      <article class="religion-card">
+        <div class="card-image" style="background-image:linear-gradient(0deg,rgba(18,62,53,.08),rgba(18,62,53,.08)),url('${RELIGION_IMAGES[item.key]}')"></div>
+        <div class="card-content">
+          <span class="tag">${item.tag}</span>
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+        </div>
+      </article>
+    `).join("");
+  </script>
+</body>
+</html>

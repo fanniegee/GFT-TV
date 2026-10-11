@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07152b">
+  <meta name="description" content="GFT.TV — Sports, world news, music and cultural discovery.">
+  <title>GFT.TV | Four Worlds. One Destination.</title>
+
+  <style>
+    :root {
+      --navy: #07152b;
+      --blue: #0878e8;
+      --white: #ffffff;
+      --muted: #aebbd0;
+      --gold: #e8bd62;
+      --page: #081120;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--page);
+      color: var(--white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      min-height: 76px;
+      padding: 15px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: #07152b;
+      border-bottom: 1px solid #203451;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      font-size: 29px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .brand span { color: #46a8ff; }
+
+    .brand small {
+      display: block;
+      margin-top: 3px;
+      color: #b5c6dc;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      align-items: center;
+      font-size: 13px;
+      color: #d6e1ef;
+    }
+
+    .nav a:hover { color: #60b5ff; }
+
+    .hero {
+      min-height: 390px;
+      padding: 65px 6%;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(4,13,29,.97), rgba(4,13,29,.75) 53%, rgba(4,13,29,.3)),
+        url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1800&q=85")
+        center 45% / cover;
+      border-bottom: 3px solid #167be5;
+    }
+
+    .hero-content { max-width: 720px; }
+
+    .eyebrow {
+      color: #63b8ff;
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.03;
+      letter-spacing: -2px;
+      margin: 17px 0;
+    }
+
+    h1 span { color: #55b1ff; }
+
+    .hero p {
+      max-width: 610px;
+      color: #d4dfed;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 14px 22px;
+      border-radius: 7px;
+      background: #0878e8;
+      color: white;
+      font-weight: bold;
+    }
+
+    .hero-button:hover { background: #2995ff; }
+
+    .section {
+      padding: 50px 5%;
+      max-width: 1600px;
+      margin: auto;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(25px, 4vw, 36px);
+      margin: 0 0 9px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .gate-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .gate {
+      --gate-image: none;
+      position: relative;
+      min-height: 350px;
+      display: flex;
+      align-items: end;
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 17px;
+      border: 1px solid rgba(255,255,255,.16);
+      background-color: #14243b;
+      background-image:
+        linear-gradient(0deg, rgba(3,10,23,.97), rgba(3,10,23,.05) 100%),
+        var(--gate-image);
+      background-size: cover;
+      background-position: center;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .gate::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.06));
+      pointer-events: none;
+    }
+
+    .gate:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .gate-content {
+      width: 100%;
+      padding: 28px;
+    }
+
+    .gate-number {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .gate h3 {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 3vw, 34px);
+    }
+
+    .gate p {
+      max-width: 490px;
+      margin: 0 0 20px;
+      color: #e0e8f3;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 5px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.15);
+      font-size: 11px;
+      color: white;
+    }
+
+    .gate-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .sports { --accent: #1689ff; }
+    .news { --accent: #45b7ff; }
+    .music { --accent: #bd91ff; }
+    .faith { --accent: #68d5a0; }
+
+    .future-panel {
+      padding: 28px;
+      background: linear-gradient(110deg, #102644, #151b35);
+      border: 1px solid #253c5d;
+      border-radius: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .future-panel h3 { margin: 0 0 9px; }
+    .future-panel p {
+      color: #bdcbe0;
+      line-height: 1.7;
+      margin: 0;
+      max-width: 700px;
+    }
+
+    .future-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .future-item {
+      padding: 17px;
+      background: #101e33;
+      border: 1px solid #233752;
+      border-radius: 10px;
+    }
+
+    .future-item strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .future-item span {
+      color: #aebbd0;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 30px 5%;
+      background: #050c17;
+      border-top: 1px solid #1c2a40;
+      color: #aebbd0;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .footer-inner {
+      max-width: 1500px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { gap: 14px; }
+      .hero { min-height: 350px; padding: 48px 6%; }
+      .gate-grid { grid-template-columns: 1fr; }
+      .gate { min-height: 330px; }
+      .future-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section { padding-top: 35px; padding-bottom: 35px; }
+    }
+
+    @media (max-width: 400px) {
+      .future-list { grid-template-columns: 1fr; }
+      .gate-content { padding: 21px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="GFT.TV Home">
+      GFT<span>.TV</span>
+      <small>FOUR WORLDS. ONE DESTINATION.</small>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#gates">Explore the Gates</a>
+      <a href="#coming">Coming Soon</a>
+      <a href="#about">About GFT.TV</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">The world, connected</div>
+        <h1>Discover more.<br>Experience <span>everything.</span></h1>
+        <p>
+          From the excitement of global sport to the stories of the world,
+          the rhythm of music and the richness of human cultures —
+          your next discovery starts here.
+        </p>
+        <a class="hero-button" href="#gates">EXPLORE GFT.TV &nbsp; →</a>
+      </div>
+    </section>
+
+    <section class="section" id="gates">
+      <div class="section-heading">
+        <div>
+          <h2>Choose Your World</h2>
+          <p>Four dedicated gateways. Endless possibilities.</p>
+        </div>
+      </div>
+
+      <div class="gate-grid">
+
+        <!-- CARD 1: Change its image URL in the GFT.TV IMAGES section below. -->
+        <article class="gate sports" id="guvaza-sports">
+          <div class="gate-content">
+            <span class="gate-number">GATE 01 / SPORTS</span>
+            <h3>Guvaza Sports World</h3>
+            <p>
+              Celebrate the games, discover emerging talent, explore
+              teams and competitions, and bring sports communities together.
+            </p>
+            <div class="tags">
+              <span class="tag">Soccer</span>
+              <span class="tag">Netball</span>
+              <span class="tag">Rugby</span>
+              <span class="tag">Cricket</span>
+              <span class="tag">Golf</span>
+              <span class="tag">Tennis</span>
+              <span class="tag">Athletics</span>
+              <span class="tag">More Sports</span>
+            </div>
+            <a class="gate-link" href="sports-world.html">
+              ENTER SPORTS WORLD <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- CARD 2: Change its image URL in the GFT.TV IMAGES section below. -->
+        <article class="gate news" id="world-sports-news">
+          <div class="gate-content">
+            <span class="gate-number">GATE 02 / NEWS</span>
+            <h3>World Sports News</h3>
+            <p>
+              Follow sporting headlines, match reports, transfers,
+              tournament updates, interviews and analysis from around the globe.
+            </p>
+            <div class="tags">
+              <span class="tag">Latest Headlines</span>
+              <span class="tag">Africa</span>
+              <span class="tag">International</span>
+              <span class="tag">Results</span>
+              <span class="tag">Analysis</span>
+            </div>
+            <a class="gate-link" href="sports-news.html">
+              ENTER SPORTS NEWS <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- CARD 3: Change its image URL in the GFT.TV IMAGES section below. -->
+        <article class="gate music" id="world-music">
+          <div class="gate-content">
+            <span class="gate-number">GATE 03 / MUSIC</span>
+            <h3>World Music Channel</h3>
+            <p>
+              Explore music from every corner of the world — from African
+              rhythms and traditional instruments to global contemporary genres.
+            </p>
+            <div class="tags">
+              <span class="tag">African Music</span>
+              <span class="tag">Gospel</span>
+              <span class="tag">Jazz</span>
+              <span class="tag">Hip-Hop</span>
+              <span class="tag">Classical</span>
+              <span class="tag">Explore Genres</span>
+            </div>
+            <a class="gate-link" href="world-music.html">
+              ENTER MUSIC CHANNEL <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- CARD 4: Change its image URL in the GFT.TV IMAGES section below. -->
+        <article class="gate faith" id="world-religion">
+          <div class="gate-content">
+            <span class="gate-number">GATE 04 / FAITH & CULTURE</span>
+            <h3>World Religious Channel</h3>
+            <p>
+              Discover the beliefs, histories, festivals, sacred traditions
+              and cultural practices of communities around the world.
+            </p>
+            <div class="tags">
+              <span class="tag">World Religions</span>
+              <span class="tag">Traditions</span>
+              <span class="tag">Festivals</span>
+              <span class="tag">History</span>
+              <span class="tag">Interfaith Learning</span>
+            </div>
+            <a class="gate-link" href="world-religion.html">
+              ENTER RELIGIOUS CHANNEL <span>→</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section" id="coming">
+      <div class="future-panel">
+        <div>
+          <h3>Built for the future</h3>
+          <p>
+            GFT.TV is being designed to grow. Dedicated sport pages,
+            news categories, music genres, cultural libraries and new
+            media experiences can be developed as separate modules.
+          </p>
+        </div>
+      </div>
+
+      <div class="future-list">
+        <div class="future-item">
+          <strong>GFT Live</strong>
+          <span>Future live events and authorised broadcasts.</span>
+        </div>
+        <div class="future-item">
+          <strong>GFT Replay</strong>
+          <span>On-demand programmes and archived content.</span>
+        </div>
+        <div class="future-item">
+          <strong>GFT Podcasts</strong>
+          <span>Conversations, interviews and discussions.</span>
+        </div>
+        <div class="future-item">
+          <strong>GFT Learning</strong>
+          <span>Educational programmes and cultural discovery.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>About GFT.TV</h2>
+      <p style="color:#bdcbe0;line-height:1.8;max-width:850px">
+        GFT.TV is a developing digital platform for sports, world sports
+        news, music and religious and cultural education. Our aim is to
+        create an accessible destination that celebrates achievement,
+        creativity, knowledge and the diversity of humanity.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>GFT.TV</strong> — Four Worlds. One Destination.</div>
+      <div>Part of the Guvaza Family Trust digital vision.</div>
+      <div>© <span id="year"></span> GFT.TV</div>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      GFT.TV IMAGES — EASY TO EDIT
+
+      Each card has its own background image.
+      Replace any URL below with:
+      1. A URL to an image you are authorised to use, OR
+      2. A local image path, such as images/my-sports-photo.jpg
+
+      For local images, put the file inside public/images/.
+      Example: "url('images/my-sports-photo.jpg')"
+
+      The next stage can add an administrator screen to change these
+      images without editing this file.
+    */
+
+    const GFT_TV_IMAGES = {
+      sports: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=85",
+      news: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=85",
+      music: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
+      religion: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85"
+    };
+
+    document.querySelector("#guvaza-sports")
+      .style.setProperty("--gate-image", `url("${GFT_TV_IMAGES.sports}")`);
+
+    document.querySelector("#world-sports-news")
+      .style.setProperty("--gate-image", `url("${GFT_TV_IMAGES.news}")`);
+
+    document.querySelector("#world-music")
+      .style.setProperty("--gate-image", `url("${GFT_TV_IMAGES.music}")`);
+
+    document.querySelector("#world-religion")
+      .style.setProperty("--gate-image", `url("${GFT_TV_IMAGES.religion}")`);
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
