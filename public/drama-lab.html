@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#21142b">
+  <title>The Drama Lab | GFT.TV</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --background: #21142b;
+      --panel: #30203d;
+      --purple: #b994ff;
+      --gold: #f1c878;
+      --white: #fff9ff;
+      --muted: #d0c2d9;
+      --border: rgba(255,255,255,.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--white);
+      background: var(--background);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 16px 6%;
+      min-height: 78px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(33,20,43,.96);
+    }
+
+    .brand {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .brand span { color: var(--purple); }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font: 9px 'Inter', sans-serif;
+      letter-spacing: 3px;
+    }
+
+    .home-link {
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 10px 17px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .home-link:hover {
+      background: var(--purple);
+      color: #21142b;
+    }
+
+    .hero {
+      min-height: 475px;
+      padding: 80px 7%;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(24,12,34,.96), rgba(24,12,34,.60)),
+        var(--drama-hero) center/cover no-repeat;
+    }
+
+    .hero-content { max-width: 760px; }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: 1.03;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #e0d5e7;
+      font-size: 17px;
+    }
+
+    .primary-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 13px 22px;
+      border-radius: 7px;
+      background: var(--purple);
+      color: #21142b;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .section { padding: 65px 6%; }
+
+    .section-heading { margin-bottom: 28px; }
+
+    .section-heading h2 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 39px);
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--panel);
+      transition: transform .2s, border-color .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--purple);
+    }
+
+    .card-image {
+      height: 195px;
+      background: var(--card-image) center/cover no-repeat;
+    }
+
+    .card-content { padding: 22px; }
+
+    .card h3 {
+      margin: 0 0 9px;
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .label {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .mission {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .mission-panel {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--panel);
+    }
+
+    .mission-panel h3 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .mission-panel p,
+    .mission-panel li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mission-panel ul { padding-left: 20px; }
+
+    .notice {
+      margin-top: 30px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 30px 6%;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .mission { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      .section { padding: 45px 5%; }
+      .hero { padding: 65px 6%; }
+      .card-image { height: 220px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="gft-tv.html">
+      GFT<span>.TV</span>
+      <small>FOUR WORLDS. ONE DESTINATION.</small>
+    </a>
+    <a class="home-link" href="gft-tv.html">← GFT.TV Home</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">GATE 06 · THE DRAMA LAB</div>
+        <h1>Where Stories Take the Stage.</h1>
+        <p>
+          Enter a world of theatre, dramatic arts and live performance.
+          Discover acting, stagecraft, cultural storytelling, original plays
+          and the creative people who bring characters to life.
+        </p>
+        <a class="primary-button" href="#discover">EXPLORE THE DRAMA LAB ↓</a>
+      </div>
+    </section>
+
+    <section class="section" id="discover">
+      <div class="section-heading">
+        <h2>Discover the Dramatic Arts</h2>
+        <p>From traditional storytelling to contemporary theatre and performance.</p>
+      </div>
+
+      <div class="grid" id="drama-grid"></div>
+
+      <div class="notice">
+        <strong>Our vision:</strong> The Drama Lab will grow into a platform
+        celebrating performers, playwrights, directors, theatre groups and
+        dramatic traditions from around the world. Features will be introduced
+        step by step, with respect for performers' rights and permission for
+        published scripts, photographs and recordings.
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="mission">
+        <div class="mission-panel">
+          <h3>A Home for Every Stage</h3>
+          <p>
+            The Drama Lab is designed to welcome school productions,
+            community theatre, professional companies, independent performers
+            and cultural groups. It will celebrate different languages,
+            traditions and forms of dramatic expression.
+          </p>
+        </div>
+
+        <div class="mission-panel">
+          <h3>What We Can Build</h3>
+          <ul>
+            <li>Performer and theatre-group profiles</li>
+            <li>Play and production showcases</li>
+            <li>Audition and casting announcements</li>
+            <li>Drama lessons and acting resources</li>
+            <li>Interviews and behind-the-scenes features</li>
+            <li>Approved performance videos and event listings</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    GFT.TV · The Drama Lab · Celebrating performance, imagination and culture.
+  </footer>
+
+  <script>
+    /*
+      DRAMA LAB IMAGES — EASY TO EDIT
+
+      Replace these image URLs with images you are authorised to use,
+      or local files inside public/images/, for example:
+      images/theatre-stage.jpg
+    */
+    const DRAMA_IMAGES = {
+      hero: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1800&q=85",
+      theatre: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=900&q=80",
+      acting: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80",
+      traditional: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=80",
+      backstage: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80",
+      writing: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80",
+      education: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+    };
+
+    const DRAMA_CATEGORIES = [
+      {
+        title: "Theatre & Stage Plays",
+        description: "Explore stage productions, theatre companies and dramatic performances.",
+        image: "theatre",
+        label: "Live theatre"
+      },
+      {
+        title: "Acting & Performance",
+        description: "Discover acting techniques, character development and performance craft.",
+        image: "acting",
+        label: "The performer"
+      },
+      {
+        title: "Traditional Storytelling",
+        description: "Celebrate oral traditions, cultural drama and stories passed between generations.",
+        image: "traditional",
+        label: "Culture & heritage"
+      },
+      {
+        title: "Behind the Scenes",
+        description: "Learn about directing, costumes, lighting, sound and stage management.",
+        image: "backstage",
+        label: "Stagecraft"
+      },
+      {
+        title: "Playwriting & Scripts",
+        description: "Explore original scripts, dramatic writing and the art of storytelling.",
+        image: "writing",
+        label: "Writing & ideas"
+      },
+      {
+        title: "Drama Education",
+        description: "Build confidence and creativity through drama exercises and learning resources.",
+        image: "education",
+        label: "Learn & create"
+      }
+    ];
+
+    document.documentElement.style.setProperty(
+      "--drama-hero",
+      `url("${DRAMA_IMAGES.hero}")`
+    );
+
+    document.getElementById("drama-grid").innerHTML =
+      DRAMA_CATEGORIES.map(category => `
+        <article class="card">
+          <div class="card-image"
+               style="--card-image: url('${DRAMA_IMAGES[category.image]}')"></div>
+          <div class="card-content">
+            <h3>${category.title}</h3>
+            <p>${category.description}</p>
+            <span class="label">${category.label} · Coming in stages</span>
+          </div>
+        </article>
+      `).join("");
+  </script>
+</body>
+</html>

@@ -455,6 +455,52 @@
           </div>
         </article>
 
+      <!-- CARD 5: MOVIE WORLD -->
+<article class="gate gate-movie" id="movie-world">
+  <div class="gate-content">
+    <span class="gate-number">GATE 05 / MOVIES</span>
+    <h3>Movie World</h3>
+    <p>
+      Discover films from across the world, from African cinema and
+      international blockbusters to independent films, documentaries,
+      animation and timeless classics.
+    </p>
+    <div class="tags">
+      <span class="tag">African Cinema</span>
+      <span class="tag">Hollywood</span>
+      <span class="tag">International Films</span>
+      <span class="tag">Documentaries</span>
+      <span class="tag">Animation</span>
+    </div>
+    <a class="gate-link" href="movie-world.html">
+      ENTER MOVIE WORLD <span>→</span>
+    </a>
+  </div>
+</article>
+
+<!-- CARD 6: THE DRAMA LAB -->
+<article class="gate gate-drama" id="drama-lab">
+  <div class="gate-content">
+    <span class="gate-number">GATE 06 / DRAMA & THEATRE</span>
+    <h3>The Drama Lab</h3>
+    <p>
+      Explore theatre productions, dramatic performances, stage plays,
+      acting talent, monologues, comedy, storytelling and creative
+      performance from around the world.
+    </p>
+    <div class="tags">
+      <span class="tag">Stage Plays</span>
+      <span class="tag">Acting</span>
+      <span class="tag">Theatre</span>
+      <span class="tag">Monologues</span>
+      <span class="tag">Comedy & Drama</span>
+    </div>
+    <a class="gate-link" href="drama-lab.html">
+      ENTER THE DRAMA LAB <span>→</span>
+    </a>
+  </div>
+</article>       
+
       </div>
     </section>
 
@@ -529,7 +575,9 @@
       sports: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=85",
       news: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=85",
       music: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
-      religion: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85"
+      religion: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85",
+      movies: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=85",
+      drama: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1200&q=85"
     };
 
     document.querySelector("#guvaza-sports")
@@ -545,6 +593,11 @@
       .style.setProperty("--gate-image", `url("${GFT_TV_IMAGES.religion}")`);
 
     document.querySelector("#year").textContent = new Date().getFullYear();
+    document.querySelector("#movie-world")
+     .style.setProperty("--gate-image", `url("${GFT_TV_IMAGES.movies}")`);
+
+    document.querySelector("#drama-lab")
+     .style.setProperty("--gate-image", `url("${GFT_TV_IMAGES.drama}")`);
   </script>
 </body>
 </html>

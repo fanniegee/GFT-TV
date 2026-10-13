@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101525">
+  <meta name="description" content="Movie World on GFT.TV — discover cinema, films and storytelling from Africa and around the world.">
+  <title>Movie World | GFT.TV</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #101525;
+      --panel: #1a2235;
+      --panel-light: #222c42;
+      --text: #f7f5f0;
+      --muted: #b9c1d2;
+      --gold: #f2c879;
+      --blue: #56c8ec;
+      --border: rgba(255,255,255,.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, h4, .brand, .eyebrow {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 5%;
+      background: rgba(16,21,37,.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .brand span { color: var(--blue); }
+
+    .brand small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    .nav a:hover { color: var(--gold); }
+
+    .return-link {
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 510px;
+      display: flex;
+      align-items: center;
+      padding: 80px 7%;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(12,17,30,.97), rgba(12,17,30,.72) 55%, rgba(12,17,30,.22)),
+        var(--movie-hero) center/cover no-repeat,
+        #1a2235;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px 0;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: .99;
+      letter-spacing: -2px;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .hero p {
+      max-width: 620px;
+      color: #e1e5ee;
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 19px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: .88rem;
+      transition: transform .2s, opacity .2s;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      background: var(--gold);
+      color: #1b1a20;
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255,255,255,.35);
+      color: white;
+    }
+
+    .section {
+      padding: 64px 6%;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin: 7px 0;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      max-width: 600px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .film-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .film-card {
+      min-width: 0;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .film-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(242,200,121,.55);
+    }
+
+    .film-image {
+      height: 220px;
+      background: var(--film-image) center/cover no-repeat, var(--panel-light);
+    }
+
+    .film-content { padding: 22px; }
+
+    .film-content h3 {
+      margin: 5px 0 10px;
+      font-size: 1.35rem;
+    }
+
+    .film-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .film-label {
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .genre-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .genre {
+      min-height: 105px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 19px;
+      background: linear-gradient(145deg, var(--panel-light), var(--panel));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .genre h3 {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+    }
+
+    .genre p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .feature-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .feature-image {
+      min-height: 320px;
+      background: var(--feature-image) center/cover no-repeat, var(--panel-light);
+    }
+
+    .feature-copy {
+      align-self: center;
+      padding: 35px;
+    }
+
+    .feature-copy h2 {
+      margin: 10px 0;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.1;
+    }
+
+    .feature-copy p { color: var(--muted); }
+
+    .notice {
+      padding: 23px;
+      border-left: 3px solid var(--gold);
+      background: rgba(242,200,121,.07);
+      color: var(--muted);
+      border-radius: 0 10px 10px 0;
+    }
+
+    footer {
+      padding: 32px 6%;
+      background: #0b0f1a;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .film-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .genre-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feature-panel { grid-template-columns: 1fr; }
+      .feature-image { min-height: 260px; }
+    }
+
+    @media (max-width: 600px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { gap: 12px; }
+      .hero { min-height: 470px; padding: 60px 6%; }
+      .section { padding: 45px 5%; }
+      .film-grid { grid-template-columns: 1fr; }
+      .film-image { height: 230px; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .feature-copy { padding: 25px; }
+      h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="gft-tv.html" aria-label="Return to GFT.TV">
+      GFT<span>.TV</span>
+      <small>FOUR WORLDS. ONE DESTINATION.</small>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="gft-tv.html">GFT.TV Home</a>
+      <a href="#discover">Discover Films</a>
+      <a href="#genres">Film Genres</a>
+      <a href="#future">Our Vision</a>
+      <a class="return-link" href="gft-tv.html">← All Gates</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">Gate 05 · Global Cinema</div>
+        <h1>Stories that <span>move</span> the world.</h1>
+        <p>
+          Welcome to Movie World — a gateway to the art of cinema.
+          Discover African storytelling, international films, independent
+          productions, documentaries, animation and unforgettable classics.
+        </p>
+        <div class="actions">
+          <a class="button button-primary" href="#discover">EXPLORE MOVIE WORLD →</a>
+          <a class="button button-secondary" href="#genres">BROWSE FILM GENRES</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="discover">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">A world of stories</div>
+          <h2>Discover the cinema universe</h2>
+          <p>
+            Different countries, languages, cultures and creative visions —
+            brought together through film.
+          </p>
+        </div>
+      </div>
+
+      <div class="film-grid" id="filmGrid"></div>
+    </section>
+
+    <section class="section" id="genres">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Find your next story</div>
+          <h2>Explore film genres</h2>
+          <p>From suspense and adventure to heartfelt drama and real-life stories.</p>
+        </div>
+      </div>
+
+      <div class="genre-grid" id="genreGrid"></div>
+    </section>
+
+    <section class="section" id="future">
+      <div class="feature-panel">
+        <div class="feature-image" id="featureImage"></div>
+        <div class="feature-copy">
+          <div class="eyebrow">Our vision</div>
+          <h2>A bigger stage for filmmakers and film lovers.</h2>
+          <p>
+            Movie World is being developed as a home for discovering cinema,
+            learning about filmmaking, celebrating creative talent and
+            exploring stories from every corner of the world.
+          </p>
+          <p>
+            Future stages may introduce film reviews, filmmaker profiles,
+            curated collections, interviews, festival coverage and authorised
+            viewing links.
+          </p>
+          <a class="button button-primary" href="gft-tv.html">RETURN TO GFT.TV →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="notice">
+        <strong>Development notice:</strong> This is the initial Movie World
+        design and catalogue foundation. Live film listings, streaming,
+        reviews and submissions will be developed in later stages. Any future
+        screening or streaming features must use films and media that are
+        legally authorised for that use.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> GFT.TV · Movie World</span>
+      <span>Global stories. Creative voices. Shared experiences.</span>
+      <a href="gft-tv.html">Back to GFT.TV Home ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      MOVIE WORLD IMAGES — EASY TO EDIT
+
+      Replace an image URL with another authorised image URL, or use a
+      local image stored inside public/images/.
+
+      Example local path:
+      images/movie-world-hero.jpg
+
+      These are visual placeholders, not a live movie catalogue.
+    */
+    const MOVIE_IMAGES = {
+      hero: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=85",
+      african: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85",
+      international: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=1000&q=85",
+      independent: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=1000&q=85",
+      documentary: "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1000&q=85",
+      animation: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1000&q=85",
+      classics: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1000&q=85",
+      feature: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=85"
+    };
+
+    const FILMS = [
+      {
+        label: "African stories",
+        title: "African Cinema",
+        description: "Discover the people, languages, histories and contemporary voices shaping African filmmaking.",
+        image: "african"
+      },
+      {
+        label: "Across borders",
+        title: "International Cinema",
+        description: "Explore distinctive stories, creative movements and filmmaking traditions from around the globe.",
+        image: "international"
+      },
+      {
+        label: "Creative freedom",
+        title: "Independent Films",
+        description: "Meet bold ideas, emerging filmmakers and personal stories made beyond the mainstream.",
+        image: "independent"
+      },
+      {
+        label: "Real-world stories",
+        title: "Documentaries",
+        description: "Explore real people, places, discoveries and events through documentary storytelling.",
+        image: "documentary"
+      },
+      {
+        label: "Imagination unleashed",
+        title: "Animation",
+        description: "Discover animated storytelling, inventive worlds and visual creativity for different audiences.",
+        image: "animation"
+      },
+      {
+        label: "Timeless screen art",
+        title: "Film Classics",
+        description: "Celebrate influential cinema, landmark performances and films that have shaped screen history.",
+        image: "classics"
+      }
+    ];
+
+    const GENRES = [
+      ["Action", "High-energy stories and spectacular challenges."],
+      ["Adventure", "Journeys, discoveries and extraordinary quests."],
+      ["Drama", "Human experiences, relationships and difficult choices."],
+      ["Comedy", "Humour, satire and stories that make us laugh."],
+      ["Romance", "Love, connection and matters of the heart."],
+      ["Thriller", "Suspense, tension and unexpected turns."],
+      ["Mystery", "Clues, investigations and puzzles to solve."],
+      ["Science Fiction", "Future worlds, technology and new possibilities."],
+      ["Fantasy", "Mythical worlds, magic and extraordinary adventures."],
+      ["Horror", "Supernatural stories and carefully crafted suspense."],
+      ["Crime", "Investigations, justice and stories of wrongdoing."],
+      ["Family", "Stories designed for shared viewing across generations."],
+      ["Historical", "Stories inspired by people, periods and past events."],
+      ["Biography", "Films about real people's lives and experiences."],
+      ["Musical", "Stories told through music, song and performance."],
+      ["Short Films", "Concise storytelling and experimental creativity."]
+    ];
+
+    function applyImage(element, imageUrl) {
+      element.style.setProperty("--film-image", `url("${imageUrl}")`);
+    }
+
+    document.documentElement.style.setProperty(
+      "--movie-hero",
+      `url("${MOVIE_IMAGES.hero}")`
+    );
+
+    const filmGrid = document.getElementById("filmGrid");
+
+    FILMS.forEach((film) => {
+      const card = document.createElement("article");
+      card.className = "film-card";
+
+      const image = document.createElement("div");
+      image.className = "film-image";
+      applyImage(image, MOVIE_IMAGES[film.image]);
+      image.setAttribute("role", "img");
+      image.setAttribute("aria-label", film.title);
+
+      const content = document.createElement("div");
+      content.className = "film-content";
+
+      const label = document.createElement("div");
+      label.className = "film-label";
+      label.textContent = film.label;
+
+      const title = document.createElement("h3");
+      title.textContent = film.title;
+
+      const description = document.createElement("p");
+      description.textContent = film.description;
+
+      content.append(label, title, description);
+      card.append(image, content);
+      filmGrid.appendChild(card);
+    });
+
+    const genreGrid = document.getElementById("genreGrid");
+
+    GENRES.forEach(([name, description]) => {
+      const card = document.createElement("article");
+      card.className = "genre";
+
+      const title = document.createElement("h3");
+      title.textContent = name;
+
+      const text = document.createElement("p");
+      text.textContent = description;
+
+      card.append(title, text);
+      genreGrid.appendChild(card);
+    });
+
+    document.getElementById("featureImage").style.setProperty(
+      "--feature-image",
+      `url("${MOVIE_IMAGES.feature}")`
+    );
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
