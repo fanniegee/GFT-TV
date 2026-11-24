@@ -169,6 +169,9 @@ footer {
 <link rel="apple-touch-icon" href="/assets/tv-app-192.png">
 <link rel="stylesheet" href="/install-app.css">
 <script src="/install-app.js" data-app="tv" defer></script>
+<link rel="stylesheet" href="/public-footer.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+<link rel="stylesheet" href="/typography.css">
 </head>
 
 <body>
@@ -240,11 +243,7 @@ footer {
 </section>
 </main>
 
-<footer>
-  <strong>GFT.TV · Guvaza Sports World</strong><br>
-  Celebrating sport, talent and community.<br>
-  © <span id="year"></span> GFT.TV
-</footer>
+<div id="gft-public-footer"></div><script src="/public-footer.js" data-config-endpoint="/api/trust-public-config" defer></script>
 
 <script>
 /*
@@ -343,7 +342,6 @@ SPORTS.forEach((sport) => {
   grid.append(card);
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
 document.documentElement.style.setProperty(
   "--sports-hero",
   'url("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1800&q=85")'

@@ -333,6 +333,9 @@
 <link rel="apple-touch-icon" href="/assets/tv-app-192.png">
 <link rel="stylesheet" href="/install-app.css">
 <script src="/install-app.js" data-app="tv" defer></script>
+<link rel="stylesheet" href="/public-footer.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+<link rel="stylesheet" href="/typography.css">
 </head>
 
 <body>
@@ -427,13 +430,7 @@
     </section>
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <span>© <span id="year"></span> GFT.TV · Movie World</span>
-      <span>Global stories. Creative voices. Shared experiences.</span>
-      <a href="gft-tv.html">Back to GFT.TV Home ↑</a>
-    </div>
-  </footer>
+  <div id="gft-public-footer"></div><script src="/public-footer.js" data-config-endpoint="/api/trust-public-config" defer></script>
 
   <script>
     /*
@@ -576,7 +573,6 @@
       `url("${MOVIE_IMAGES.feature}")`
     );
 
-    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

@@ -54,6 +54,9 @@ footer{padding:25px 5%;background:#050c17;border-top:1px solid var(--line);font-
 <link rel="apple-touch-icon" href="/assets/tv-app-192.png">
 <link rel="stylesheet" href="/install-app.css">
 <script src="/install-app.js" data-app="tv" defer></script>
+<link rel="stylesheet" href="/public-footer.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+<link rel="stylesheet" href="/typography.css">
 </head>
 <body>
 <header>
@@ -130,11 +133,7 @@ footer{padding:25px 5%;background:#050c17;border-top:1px solid var(--line);font-
 </section>
 </main>
 
-<footer>
-<strong>GFT.TV · World Sports News</strong><br>
-Reporting sport, celebrating achievement and connecting communities.<br>
-© <span id="year"></span> GFT.TV
-</footer>
+<div id="gft-public-footer"></div><script src="/public-footer.js" data-config-endpoint="/api/trust-public-config" defer></script>
 
 <script>
 /*
@@ -152,7 +151,7 @@ document.getElementById("leadStory").style.setProperty("--story-image",`url("${N
 document.getElementById("africaStory").style.setProperty("--story-image",`url("${NEWS_IMAGES.africa}")`);
 document.getElementById("globalStory").style.setProperty("--story-image",`url("${NEWS_IMAGES.global}")`);
 document.querySelector(".hero").style.setProperty("--news-hero",`url("${NEWS_IMAGES.hero}")`);
-document.getElementById("year").textContent = new Date().getFullYear();
+
 </script>
 </body>
 </html>
