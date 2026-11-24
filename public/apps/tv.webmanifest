@@ -1,0 +1,25 @@
+{
+  "description": "GFT.TV official app",
+  "display": "standalone",
+  "short_name": "GFT.TV",
+  "theme_color": "#07152b",
+  "name": "GFT.TV",
+  "scope": "/",
+  "id": "/apps/tv",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/assets/tv-app-192.png",
+      "purpose": "any",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "/assets/tv-app-512.png",
+      "purpose": "any",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/gft-tv.html",
+  "background_color": "#081120"
+}

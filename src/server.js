@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 app.disable('x-powered-by');
 app.use(express.json());
+app.get('/app-worker.js', (_req, res) => res.set({'Cache-Control':'no-store','Service-Worker-Allowed':'/'}).sendFile(path.join(__dirname, '../public/app-worker.js')));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/api/health', (req, res) => {

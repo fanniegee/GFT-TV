@@ -1,0 +1,7 @@
+.gft-app-install { position:fixed; z-index:9990; left:16px; right:16px; bottom:16px; max-width:900px; margin:auto; display:flex; align-items:center; gap:16px; padding:20px; border:1px solid #5f7891; border-radius:18px; box-shadow:0 10px 45px #0006; background:#10243b; color:#fff; font-family:Montserrat,Arial,sans-serif; }
+.gft-app-install>div { flex:1; min-width:0; }
+.gft-app-install strong { font-size:15px; }
+.gft-app-install p { margin:7px 0 0; font-size:12px; line-height:1.6; color:#d7e2ee; }
+.gft-app-install button { border:0; border-radius:9px; padding:12px 16px; background:#fff; color:#10243b; font:700 12px Montserrat,Arial,sans-serif; cursor:pointer; white-space:nowrap; }
+.gft-app-install button.gft-app-later { background:transparent; color:#fff; border:1px solid #8294a9; }
+@media(max-width:600px){.gft-app-install{flex-wrap:wrap;padding:16px}.gft-app-install>div{flex-basis:100%}.gft-app-install button{flex:1}}
